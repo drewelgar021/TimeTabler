@@ -5,14 +5,15 @@ public class Event {
     private float startTime;
     private float endTime;
 
-    public Event(EventType eventType, String title, String description, float startTime,
-                 float endTime) {
-        this.eventType = eventType;
+    public Event(String title, String description, float startTime, float endTime,
+                 EventType eventType) {
         this.title = title;
         this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.eventType = eventType;
     }
+
 
     public EventType getEventType() {
         return eventType;
