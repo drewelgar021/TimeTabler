@@ -1,5 +1,3 @@
-import tgui.EventInputGUI;
-import tgui.MyEventInputGUI;
 import timetable.Timetable;
 
 import javax.swing.*;
@@ -11,10 +9,8 @@ public class Main {
 
         UIManager.put("Label.foreground", Color.WHITE);
         UIManager.put("Button.foreground", Color.WHITE);
-        UIManager.put("TextField.foreground", Color.WHITE);
-        UIManager.put("TextArea.foreground", Color.WHITE);
 
         JFrame frame = new MyEventInputGUI(timetable);
         frame.setVisible(true);
-}
+    }
 }

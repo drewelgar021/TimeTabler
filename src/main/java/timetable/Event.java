@@ -1,9 +1,11 @@
+package timetable;
+
 public class Event {
-    private EventType eventType;
     private String title;
     private String description;
     private float startTime;
     private float endTime;
+    private EventType eventType;
 
     public Event(String title, String description, float startTime, float endTime,
                  EventType eventType) {

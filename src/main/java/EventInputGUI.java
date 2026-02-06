@@ -1,5 +1,4 @@
-package tgui;
-
+import tgui.TFrame;
 import timetable.Event;
 import timetable.EventType;
 import timetable.Timetable;
