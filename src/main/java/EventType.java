@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class EventType {
+public enum EventType {
+    CLASS,
+    WORK,
+    PERSONAL
 }
