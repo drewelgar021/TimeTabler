@@ -1,16 +1,18 @@
+package timetable;
+
 import java.util.List;
 
 public class Timetable {
     private String title;
     private List<Event> events;
-    private int startTime;
-    private int endTime;
+    private float startTime;
+    private float endTime;
 
 
-    public Timetable() {
-        this.title = "My Timetable";
-        this.startTime = 6;
-        this.endTime = 18;
+    public Timetable(String title, float startTime, float endTime) {
+        this.title = title;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public String getTitle() {
@@ -22,7 +24,7 @@ public class Timetable {
     }
 
 
-    public int getStartTime() {
+    public float getStartTime() {
         return startTime;
     }
 
@@ -31,7 +33,7 @@ public class Timetable {
     }
 
 
-    public int getEndTime() {
+    public float getEndTime() {
         return endTime;
     }
 
