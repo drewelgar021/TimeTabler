@@ -3,11 +3,11 @@ package timetable;
 public class Event {
     private String title;
     private String description;
-    private float startTime;
-    private float endTime;
+    private double startTime;
+    private double endTime;
     private EventType eventType;
 
-    public Event(String title, String description, float startTime, float endTime,
+    public Event(String title, String description, double startTime, double endTime,
                  EventType eventType) {
         this.title = title;
         this.description = description;
@@ -44,7 +44,7 @@ public class Event {
     }
 
 
-    public float getStartTime() {
+    public double getStartTime() {
         return startTime;
     }
 
@@ -53,7 +53,7 @@ public class Event {
     }
 
 
-    public float getEndTime() {
+    public double getEndTime() {
         return endTime;
     }
 
