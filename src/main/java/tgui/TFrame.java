@@ -8,7 +8,8 @@ import java.awt.*;
  */
 public class TFrame extends JFrame {
     private final JPanel content;
-
+    public static final Font heading1Font = new Font("defaultFont", Font.BOLD, 20);
+    public static final Font heading2Font = new Font("defaultFont", Font.BOLD, 16);
     /**
      * Instantiates a new TFrame.
      * @param title Window title of the TFrame
@@ -17,7 +18,9 @@ public class TFrame extends JFrame {
         super(title);
 
         content = new JPanel();
-        this.add(content);
+        JScrollPane scrollPane = new JScrollPane(content);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(10);
+        this.add(scrollPane);
         content.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         content.setBackground(Color.DARK_GRAY);
         content.setVisible(true);
