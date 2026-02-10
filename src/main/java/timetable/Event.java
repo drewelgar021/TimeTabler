@@ -1,13 +1,16 @@
 package timetable;
 
+import java.time.DayOfWeek;
+
 public class Event {
     private String title;
     private String description;
+    private DayOfWeek day;
     private double startTime;
     private double endTime;
     private EventType eventType;
 
-    public Event(String title, String description, double startTime, double endTime,
+    public Event(String title, String description, DayOfWeek day, double startTime, double endTime,
                  EventType eventType) {
         this.title = title;
         this.description = description;

@@ -5,6 +5,7 @@ import timetable.Timetable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.DayOfWeek;
 
 /**
  * GUI window for adding an Event to a Timetable
@@ -14,6 +15,7 @@ public class EventInputGUI extends TFrame {
 
     private final JTextField titleInput;
     private final JTextArea descriptionInput;
+    private final JComboBox<DayOfWeek> dayInput;
     private final JSpinner startTimeInput;
     private final JSpinner endTimeInput;
     private final JComboBox<EventType> eventTypeInput;
@@ -58,8 +60,18 @@ public class EventInputGUI extends TFrame {
         form.add(descriptionInput, grid);
 
 
-        startTimeInput = new TSpinner();
+        dayInput = new TComboBox<>(DayOfWeek.values());
         grid.gridy = 2;
+
+        grid.gridx = 0;
+        form.add(new JLabel("Day: "), grid);
+
+        grid.gridx = 1;
+        form.add(dayInput, grid);
+
+
+        startTimeInput = new TSpinner();
+        grid.gridy = 3;
 
         grid.gridx = 0;
         form.add(new JLabel("Start Time: "), grid);
@@ -69,7 +81,7 @@ public class EventInputGUI extends TFrame {
 
 
         endTimeInput = new TSpinner();
-        grid.gridy = 3;
+        grid.gridy = 4;
 
         grid.gridx = 0;
         form.add(new JLabel("End Time: "), grid);
@@ -79,7 +91,7 @@ public class EventInputGUI extends TFrame {
 
 
         eventTypeInput = new TComboBox<>(EventType.values());
-        grid.gridy = 4;
+        grid.gridy = 5;
 
         grid.gridx = 0;
         form.add(new JLabel("Event Type: "), grid);
@@ -105,14 +117,18 @@ public class EventInputGUI extends TFrame {
         buttonPanel.add(addButton);
     }
 
+    /**
+     * Adds a new event to the timetable based on the values in each input field.
+     */
     public void addEvent() {
         String title = titleInput.getText().trim();
         String description = descriptionInput.getText().trim();
+        DayOfWeek day = (DayOfWeek) dayInput.getSelectedItem();
         double startTime = (double) startTimeInput.getValue();
         double endTime = (double) endTimeInput.getValue();
         EventType eventType = (EventType) eventTypeInput.getSelectedItem();
 
-        timetable.addEvent(new Event(title, description, startTime, endTime, eventType));
+        timetable.addEvent(new Event(title, description, day, startTime, endTime, eventType));
         dispose();
     }
 }
