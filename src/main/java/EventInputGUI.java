@@ -20,14 +20,19 @@ public class EventInputGUI extends TFrame {
     private final JSpinner endTimeInput;
     private final JComboBox<EventType> eventTypeInput;
 
+    private final TimetableGUI timetableGUI;
+
     /**
      * Instantiates a new EventInputGUI
      * @param timetable Timetable for the new event to be added to
      */
-    public EventInputGUI(Timetable timetable) {
+    public EventInputGUI(Timetable timetable, TimetableGUI timetableGUI) {
         super("Add Event");
+
         this.timetable = timetable;
-        this.setSize(500, 600);
+        this.timetableGUI = timetableGUI;
+
+        this.setSize(400, 500);
 
         this.content().setLayout(new GridBagLayout());
         GridBagConstraints grid = new GridBagConstraints();
@@ -129,6 +134,7 @@ public class EventInputGUI extends TFrame {
         EventType eventType = (EventType) eventTypeInput.getSelectedItem();
 
         timetable.addEvent(new Event(title, description, day, startTime, endTime, eventType));
+        this.timetableGUI.reload();
         dispose();
     }
 }

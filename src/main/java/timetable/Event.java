@@ -14,6 +14,7 @@ public class Event {
                  EventType eventType) {
         this.title = title;
         this.description = description;
+        this.day = day;
         this.startTime = startTime;
         this.endTime = endTime;
         this.eventType = eventType;
@@ -62,5 +63,9 @@ public class Event {
 
     public void setEndTime(float endTime) {
         this.endTime = endTime;
+    }
+
+    public DayOfWeek getDay() {
+        return day;
     }
 }
