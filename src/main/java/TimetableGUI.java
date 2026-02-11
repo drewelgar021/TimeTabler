@@ -31,7 +31,6 @@ public class TimetableGUI extends TFrame {
 
     /**
      * Reloads the window to display current timetable data.
-     * TODO: dump timetable data to xml file
      */
     public void reload() {
         this.content().removeAll();
@@ -44,8 +43,13 @@ public class TimetableGUI extends TFrame {
         grid.gridx = 0;
 
         TButton addButton = new TButton("Add Event");
-        addButton.addActionListener(e -> eventInput());
+        addButton.addActionListener(e -> GUIManager.eventInput(timetable, this));
         this.content().add(addButton, grid);
+
+        grid.gridx = 1;
+        TButton editButton = new TButton("Edit Timetable Details");
+        editButton.addActionListener(e -> GUIManager.editTimetable(timetable, this));
+        this.content().add(editButton, grid);
 
         for (DayOfWeek day : DayOfWeek.values()) {
             grid.gridy++;
@@ -124,13 +128,5 @@ public class TimetableGUI extends TFrame {
     public void removeEvent(Event event) {
         timetable.removeEvent(event);
         reload();
-    }
-
-    /**
-     * Shows an EventInputGUI allowing the user to add an event to the timetable
-     */
-    public void eventInput() {
-        EventInputGUI eventInputGUI = new EventInputGUI(timetable, this);
-        eventInputGUI.setVisible(true);
     }
 }
