@@ -1,5 +1,8 @@
 import timetable.Timetable;
 
+/**
+ * Manages opening and of GUI windows.
+ */
 public class GUIManager {
     /**
      * Creates a new EventInputGUI.

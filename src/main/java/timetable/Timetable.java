@@ -3,6 +3,9 @@ package timetable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representation of a timetable. Stores multiple events.
+ */
 public class Timetable {
     private String title;
     private final List<Event> events = new ArrayList<>();

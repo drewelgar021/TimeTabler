@@ -1,9 +1,11 @@
 package tgui;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * Standardised JTextField for TimeTabler.
+ */
 public class TTextField extends JTextField {
     public TTextField(int columns) {
         super(columns);

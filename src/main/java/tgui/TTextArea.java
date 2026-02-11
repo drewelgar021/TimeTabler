@@ -3,6 +3,9 @@ package tgui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Standardised JTextArea for TimeTabler.
+ */
 public class TTextArea extends JTextArea {
     public TTextArea(int rows, int columns) {
         super(rows, columns);

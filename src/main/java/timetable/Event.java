@@ -2,6 +2,9 @@ package timetable;
 
 import java.time.DayOfWeek;
 
+/**
+ * Class representation of an event in a timetable.
+ */
 public class Event {
     private String title;
     private String description;

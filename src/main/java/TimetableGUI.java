@@ -9,6 +9,9 @@ import java.time.DayOfWeek;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * A GUI displaying a timetable's events.
+ */
 public class TimetableGUI extends TFrame {
 
     Timetable timetable;

@@ -3,6 +3,9 @@ package tgui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Standardised JButton for TimeTabler.
+ */
 public class TButton extends JButton {
     public TButton(String text) {
         super(text);

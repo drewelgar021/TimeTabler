@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * A JFrame stylised for TimeTabler.
+ * Standardised JFrame for TimeTabler.
  */
 public class TFrame extends JFrame {
     private final JPanel content;

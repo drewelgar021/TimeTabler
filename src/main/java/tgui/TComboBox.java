@@ -3,6 +3,10 @@ package tgui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Standardised JComboBox for TimeTabler.
+ * @param <E> Enum providing options to be selected in combo box.
+ */
 public class TComboBox<E> extends JComboBox<E> {
     public TComboBox(E[] values) {
         super(values);
