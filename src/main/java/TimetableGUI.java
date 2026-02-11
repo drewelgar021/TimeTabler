@@ -41,6 +41,12 @@ public class TimetableGUI extends TFrame {
         this.content().repaint();
         this.setTitle(timetable.getTitle());
 
+        try {
+            timetable.save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error saving timetable.");
+        }
+
         GridBagConstraints grid = new GridBagConstraints();
 
         grid.gridy = 0;
@@ -85,9 +91,9 @@ public class TimetableGUI extends TFrame {
                 this.content().add(eventTitle, grid);
 
                 grid.gridx = 1;
-                JLabel startTime = new JLabel("Start: " +
+                JLabel startTime = new JLabel("Start: "
                         // conversion to base 60 for time
-                        String.format(
+                        + String.format(
                                 "%02d:%02d",
                                 (int) Math.floor(event.getStartTime()),
                                 (int) ((event.getStartTime()
@@ -111,11 +117,12 @@ public class TimetableGUI extends TFrame {
 
                 grid.gridx = 1;
                 JLabel endTime = new JLabel(
-                        "End: " +
+                        "End: "
                                 // conversion to base 60 for time
-                                String.format("%02d:%02d",
+                                + String.format("%02d:%02d",
                                         (int) Math.floor(event.getEndTime()),
-                                        (int) ((event.getEndTime() - Math.floor(event.getEndTime())) * 60))
+                                        (int) ((event.getEndTime()
+                                                - Math.floor(event.getEndTime())) * 60))
                 );
                 endTime.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
                 this.content().add(endTime, grid);
