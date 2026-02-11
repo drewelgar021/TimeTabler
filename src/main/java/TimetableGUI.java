@@ -36,10 +36,11 @@ public class TimetableGUI extends TFrame {
         this.content().removeAll();
         this.content().revalidate();
         this.content().repaint();
+        this.setTitle(timetable.getTitle());
 
         GridBagConstraints grid = new GridBagConstraints();
 
-        grid.gridy = 0; // as will increment at start of for loop
+        grid.gridy = 0;
         grid.gridx = 0;
 
         TButton addButton = new TButton("Add Event");

@@ -6,11 +6,11 @@ import java.util.List;
 public class Timetable {
     private String title;
     private final List<Event> events = new ArrayList<>();
-    private double startTime;
-    private double endTime;
+    private int startTime;
+    private int endTime;
 
 
-    public Timetable(String title, double startTime, double endTime) {
+    public Timetable(String title, int startTime, int endTime) {
         this.title = title;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -25,7 +25,7 @@ public class Timetable {
     }
 
 
-    public double getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
@@ -34,7 +34,7 @@ public class Timetable {
     }
 
 
-    public double getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 

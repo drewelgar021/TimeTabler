@@ -1,5 +1,4 @@
 import tgui.*;
-import timetable.Event;
 import timetable.EventType;
 import timetable.Timetable;
 
@@ -10,15 +9,12 @@ import java.time.DayOfWeek;
 /**
  * GUI window for adding an Event to a Timetable
  */
-public class EventInputGUI extends TFrame {
+public class TimetableDetailsGUI extends TFrame {
     private final Timetable timetable;
 
     private final JTextField titleInput;
-    private final JTextArea descriptionInput;
-    private final JComboBox<DayOfWeek> dayInput;
     private final JSpinner startTimeInput;
     private final JSpinner endTimeInput;
-    private final JComboBox<EventType> eventTypeInput;
 
     private final TimetableGUI timetableGUI;
 
@@ -26,8 +22,8 @@ public class EventInputGUI extends TFrame {
      * Instantiates a new EventInputGUI
      * @param timetable Timetable for the new event to be added to
      */
-    public EventInputGUI(Timetable timetable, TimetableGUI timetableGUI) {
-        super("Add Event");
+    public TimetableDetailsGUI(Timetable timetable, TimetableGUI timetableGUI) {
+        super("Edit Timetable Details");
 
         this.timetable = timetable;
         this.timetableGUI = timetableGUI;
@@ -55,28 +51,8 @@ public class EventInputGUI extends TFrame {
         form.add(titleInput, grid);
 
 
-        descriptionInput = new TTextArea(4, 16);
-        grid.gridy = 1;
-
-        grid.gridx = 0;
-        form.add(new JLabel("Description: "), grid);
-
-        grid.gridx = 1;
-        form.add(descriptionInput, grid);
-
-
-        dayInput = new TComboBox<>(DayOfWeek.values());
+        startTimeInput = new TSpinner(1.0);
         grid.gridy = 2;
-
-        grid.gridx = 0;
-        form.add(new JLabel("Day: "), grid);
-
-        grid.gridx = 1;
-        form.add(dayInput, grid);
-
-
-        startTimeInput = new TSpinner(0.5);
-        grid.gridy = 3;
 
         grid.gridx = 0;
         form.add(new JLabel("Start Time: "), grid);
@@ -85,24 +61,14 @@ public class EventInputGUI extends TFrame {
         form.add(startTimeInput, grid);
 
 
-        endTimeInput = new TSpinner(0.5);
-        grid.gridy = 4;
+        endTimeInput = new TSpinner(1.0);
+        grid.gridy = 3;
 
         grid.gridx = 0;
         form.add(new JLabel("End Time: "), grid);
 
         grid.gridx = 1;
         form.add(endTimeInput, grid);
-
-
-        eventTypeInput = new TComboBox<>(EventType.values());
-        grid.gridy = 5;
-
-        grid.gridx = 0;
-        form.add(new JLabel("Event Type: "), grid);
-
-        grid.gridx = 1;
-        form.add(eventTypeInput, grid);
 
 
         JPanel buttonPanel = new JPanel();
@@ -114,27 +80,23 @@ public class EventInputGUI extends TFrame {
         JButton cancelButton = new TButton("Cancel");
         cancelButton.addActionListener(e -> dispose());
 
-        JButton addButton = new TButton("Add");
-        addButton.addActionListener(e -> addEvent());
+        JButton saveButton = new TButton("Save");
+        saveButton.addActionListener(e -> save());
 
         buttonPanel.add(cancelButton);
         buttonPanel.add(Box.createHorizontalStrut(20));
-        buttonPanel.add(addButton);
+        buttonPanel.add(saveButton);
     }
 
-    /**
-     * Adds a new event to the timetable based on the values in each input field.
-     */
-    public void addEvent() {
+    public void save() {
         String title = titleInput.getText().trim();
-        String description = descriptionInput.getText().trim();
-        DayOfWeek day = (DayOfWeek) dayInput.getSelectedItem();
-        double startTime = (double) startTimeInput.getValue();
-        double endTime = (double) endTimeInput.getValue();
-        EventType eventType = (EventType) eventTypeInput.getSelectedItem();
+        int startTime = Math.toIntExact(Math.round((double) startTimeInput.getValue()));
+        int endTime = Math.toIntExact(Math.round((double) endTimeInput.getValue()));
 
-        timetable.addEvent(new Event(title, description, day, startTime, endTime, eventType));
-        this.timetableGUI.reload();
+        timetable.setTitle(title);
+        timetable.setStartTime(startTime);
+        timetable.setEndTime(endTime);
+        timetableGUI.reload();
         dispose();
     }
 }
