@@ -27,7 +27,7 @@ public class TimetableGUI extends TFrame {
         this.timetable = timetable;
 
         this.content().setLayout(new GridBagLayout());
-        this.setSize(500, 600);
+        this.setSize(600, 800);
 
         reload();
     }
