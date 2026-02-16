@@ -8,16 +8,19 @@
 
 #table(
     columns: 8,
-    rows: (timetable.endTime - timetable.startTime) + 1,
+    rows: (timetable.endTime - timetable.startTime) * 2 + 1,
     inset: 10pt,
     stroke: 0.5pt,
     [],
     [Mon], [Tue], [Wed], [Thu], [Fri], [Sat], [Sun],
 
     ..(
-        for time in range(timetable.startTime, timetable.endTime) {
+        for row in range(0, (timetable.endTime - timetable.startTime) * 2) {
+            let time = timetable.startTime + row / 2
+            if time == calc.floor(time) {
+                (table.cell(rowspan: 2)[#time],)
+            }
             (
-                table.cell(colspan: 1)[#time],
                 ..(for i in range(0, 7) {
                     (table.cell()[#i],)
                 })
