@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TimetableGUI extends TFrame {
 
-    Timetable timetable;
+    private Timetable timetable;
 
     /**
      * Instantiates a new EventInputGUI.
@@ -33,7 +33,7 @@ public class TimetableGUI extends TFrame {
     }
 
     /**
-     * Reloads the window to display current timetable data.
+     * Reloads the window to display current timetable data. Timetable is saved on every reload.
      */
     public void reload() {
         this.content().removeAll();

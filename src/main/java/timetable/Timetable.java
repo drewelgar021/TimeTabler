@@ -107,7 +107,7 @@ public class Timetable {
      * @throws TransformerException if an error occurs during XML transformation
      */
     public void save() throws ParserConfigurationException, TransformerException {
-        TimetableFactory.saveTimetable(this, title + ".xml");
+        TimetableFactory.saveTimetable(this, "timetables/" + title + ".xml");
     }
     
 }
