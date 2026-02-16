@@ -2,6 +2,7 @@ package timetable;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Timetable {
      * Instantiates a new Timetable
      * @param title Title of the timetable.
      * @param startTime Start time of the timetable (relevant for PDF outputting).
-     * @param endTime End timet of the timetable (relevant for PDF outputting).
+     * @param endTime End time of the timetable (relevant for PDF outputting).
      */
     public Timetable(String title, int startTime, int endTime) {
         this.title = title;
@@ -106,8 +107,8 @@ public class Timetable {
      * @throws ParserConfigurationException if a DocumentBuilder cannot be created
      * @throws TransformerException if an error occurs during XML transformation
      */
-    public void save() throws ParserConfigurationException, TransformerException {
-        TimetableFactory.saveTimetable(this, "timetables/" + title + ".xml");
+    public void save() throws IOException {
+        TimetableFactory.saveTimetable(this, "timetables/" + title + ".json");
     }
     
 }
