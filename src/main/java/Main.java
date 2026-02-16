@@ -1,26 +1,23 @@
-import org.xml.sax.SAXException;
 import timetable.Timetable;
 import timetable.TimetableFactory;
 
 import javax.swing.*;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args)
-            throws ParserConfigurationException, IOException, SAXException, TransformerException {
+            throws IOException {
 
-        File timetableFile = new File("timetables/Timetable.xml");
+        File timetableFile = new File("timetables/Timetable.json");
         // Create a new empty timetable if one does not exist
         if (!timetableFile.exists()) {
-            TimetableFactory.saveTimetable(new Timetable("Timetable", 6, 6),
-                    "Timetable.xml");
+            TimetableFactory.saveTimetable(new Timetable("Timetable", 6, 22),
+                    "timetables/Timetable.json");
         }
 
-        Timetable timetable = TimetableFactory.loadTimetable("timetables/Timetable.xml");
+        Timetable timetable = TimetableFactory.loadTimetable("timetables/Timetable.json");
 
 
         UIManager.put("Label.foreground", Color.WHITE);
