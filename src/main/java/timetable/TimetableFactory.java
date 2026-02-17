@@ -1,12 +1,11 @@
 package timetable;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.DayOfWeek;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Loads timetables from files and saves timetables to files.

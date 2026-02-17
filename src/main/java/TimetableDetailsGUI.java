@@ -1,10 +1,19 @@
-import tgui.*;
-import timetable.EventType;
-import timetable.Timetable;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
-import javax.swing.*;
-import java.awt.*;
-import java.time.DayOfWeek;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+
+import tgui.TButton;
+import tgui.TFrame;
+import tgui.TSpinner;
+import tgui.TTextField;
+import timetable.Timetable;
 
 /**
  * GUI window for adding an Event to a Timetable
