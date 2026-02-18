@@ -1,4 +1,5 @@
 timetables/*
+ConvertToPDF.json
 
 target/
 !.mvn/wrapper/maven-wrapper.jar

@@ -2,9 +2,12 @@ import tgui.TButton;
 import tgui.TFrame;
 import timetable.Event;
 import timetable.Timetable;
+import timetable.TimetableFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.Comparator;
 import java.util.List;
@@ -60,6 +63,11 @@ public class TimetableGUI extends TFrame {
         TButton editButton = new TButton("Edit Timetable Details");
         editButton.addActionListener(e -> GUIManager.editTimetable(timetable, this));
         this.content().add(editButton, grid);
+
+        grid.gridx = 2;
+        TButton pdfButton = new TButton("Generate PDF");
+        pdfButton.addActionListener(e -> generatePDF());
+        this.content().add(pdfButton, grid);
 
         for (DayOfWeek day : DayOfWeek.values()) {
             grid.gridy++;
@@ -136,8 +144,23 @@ public class TimetableGUI extends TFrame {
      * Removes an event from the timetable and reloads the window to display changes.
      * @param event Event to be removed from the timetable.
      */
-    public void removeEvent(Event event) {
+    private void removeEvent(Event event) {
         timetable.removeEvent(event);
         reload();
+    }
+
+    /**
+     * Generates a PDF file for the currently displayed timetable.
+     */
+    private void generatePDF() {
+        try {
+            TimetableFactory.saveTimetable(timetable, "ConvertToPDF.json");
+            TypstCompiler.generatePDF("generatedPDFs/" + timetable.getTitle() + ".pdf");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Unable to generate timetable: " + ex.getMessage()
+            );
+        }
     }
 }

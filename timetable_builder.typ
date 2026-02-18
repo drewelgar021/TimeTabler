@@ -1,7 +1,7 @@
-#let timetable = json("timetables/Timetable.json")
+#let timetable = json("ConvertToPDF.json")
 
 #set align(center)
-#set page(margin: 0pt)
+#set page(margin: 12pt)
 
 
 #let desc = text.with(size: 10pt)
