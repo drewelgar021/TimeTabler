@@ -6,7 +6,6 @@ import timetable.TimetableFactory;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.Comparator;
@@ -65,7 +64,7 @@ public class TimetableGUI extends TFrame {
         this.content().add(editButton, grid);
 
         grid.gridx = 2;
-        TButton pdfButton = new TButton("Generate PDF");
+        TButton pdfButton = new TButton("Export as PDF");
         pdfButton.addActionListener(e -> generatePDF());
         this.content().add(pdfButton, grid);
 
@@ -156,10 +155,12 @@ public class TimetableGUI extends TFrame {
         try {
             TimetableFactory.saveTimetable(timetable, "ConvertToPDF.json");
             TypstCompiler.generatePDF("generatedPDFs/" + timetable.getTitle() + ".pdf");
+            JOptionPane.showMessageDialog(this,
+                    "Timetable exported to generatedPDFs/" + timetable.getTitle() + ".pdf");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
                     this,
-                    "Unable to generate timetable: " + ex.getMessage()
+                    "Unable to export timetable: " + ex.getMessage()
             );
         }
     }
