@@ -13,7 +13,6 @@ import tgui.TButton;
 import tgui.TFrame;
 import tgui.TSpinner;
 import tgui.TTextField;
-import timetable.Timetable;
 
 /**
  * GUI window for adding an Event to a Timetable

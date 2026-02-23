@@ -1,5 +1,3 @@
-import timetable.Timetable;
-
 /**
  * Manages opening and of GUI windows.
  */
