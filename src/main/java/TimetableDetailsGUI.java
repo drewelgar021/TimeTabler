@@ -28,8 +28,9 @@ public class TimetableDetailsGUI extends TFrame {
     private final TimetableGUI timetableGUI;
 
     /**
-     * Instantiates a new EventInputGUI
-     * @param timetable Timetable for the new event to be added to
+     * Instantiates a new EventInputGUI.
+     * @param timetable Timetable for the new event to be added to.
+     * @param timetableGUI The parent TimetableGUI window.
      */
     public TimetableDetailsGUI(Timetable timetable, TimetableGUI timetableGUI) {
         super("Edit Timetable Details");
@@ -50,7 +51,7 @@ public class TimetableDetailsGUI extends TFrame {
 
         grid.insets = new Insets(10, 10, 10, 10);
 
-        titleInput = new TTextField(16);
+        titleInput = new TTextField(timetable.getTitle(), 16);
         grid.gridy = 0;
 
         grid.gridx = 0;
@@ -60,7 +61,7 @@ public class TimetableDetailsGUI extends TFrame {
         form.add(titleInput, grid);
 
 
-        startTimeInput = new TSpinner(1.0);
+        startTimeInput = new TSpinner(timetable.getStartTime(), 1.0);
         grid.gridy = 2;
 
         grid.gridx = 0;
@@ -70,7 +71,7 @@ public class TimetableDetailsGUI extends TFrame {
         form.add(startTimeInput, grid);
 
 
-        endTimeInput = new TSpinner(1.0);
+        endTimeInput = new TSpinner(timetable.getEndTime(), 1.0);
         grid.gridy = 3;
 
         grid.gridx = 0;
