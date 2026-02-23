@@ -1,7 +1,4 @@
 import tgui.*;
-import timetable.Event;
-import timetable.EventType;
-import timetable.Timetable;
 
 import javax.swing.*;
 import java.awt.*;

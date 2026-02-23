@@ -1,5 +1,3 @@
-package timetable;
-
 /**
  * Types of events to be selected.
  */

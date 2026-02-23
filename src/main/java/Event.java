@@ -1,5 +1,3 @@
-package timetable;
-
 import java.time.DayOfWeek;
 
 /**

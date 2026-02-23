@@ -1,5 +1,3 @@
-package timetable;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -108,7 +106,8 @@ public class Timetable {
      * @throws TransformerException if an error occurs during XML transformation
      */
     public void save() throws IOException {
-        TimetableFactory.saveTimetable(this, "timetables/" + title + ".json");
+        TimetableFactory.saveTimetable(
+                this, Main.getDirectory() + "/timetables/" + title + ".json");
     }
     
 }
