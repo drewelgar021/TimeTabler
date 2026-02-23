@@ -1,8 +1,5 @@
 import tgui.TButton;
 import tgui.TFrame;
-import timetable.Event;
-import timetable.Timetable;
-import timetable.TimetableFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -154,7 +151,8 @@ public class TimetableGUI extends TFrame {
     private void generatePDF() {
         try {
             TimetableFactory.saveTimetable(timetable, "ConvertToPDF.json");
-            TypstCompiler.generatePDF("generatedPDFs/" + timetable.getTitle() + ".pdf");
+            TypstCompiler.generatePDF(
+                    Main.getDirectory() + "/generatedPDFs/" + timetable.getTitle() + ".pdf");
             JOptionPane.showMessageDialog(this,
                     "Timetable exported to generatedPDFs/" + timetable.getTitle() + ".pdf");
         } catch (IOException ex) {

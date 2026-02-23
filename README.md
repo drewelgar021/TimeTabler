@@ -9,3 +9,29 @@ Multiple timetables are not yet supported. The application will always open the 
 `timetables/Timetable.json`, creating a new, blank timetable at this location if no such file
 exists. Renaming a timetable will save it under its new name, however the application does not yet
 provide an option to open it.
+
+## Build Instructions
+Requires Java 21+
+
+Firstly, clone the repo.
+
+On Linux/MacOS:
+```bash
+mvn clean package
+./mvnw package
+chmod +x timetabler install.sh
+./install.sh
+```
+
+On Windows:
+```bash
+mvn clean package
+mvnw.cmd package
+```
+Then run `install.bat`.
+
+Run `timetabler` in your terminal to launch the application. Only works when run within the cloned
+directory as timetable files are stored here (a workaround may be implemented one day).
+
+I have not tested the build on Windows and probably won't ever get around to it. If you find issues
+then absolutely feel free to make a PR.

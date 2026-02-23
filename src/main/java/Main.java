@@ -1,10 +1,8 @@
-import timetable.Timetable;
-import timetable.TimetableFactory;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Main {
     public static void main(String[] args)
@@ -14,10 +12,11 @@ public class Main {
         // Create a new empty timetable if one does not exist
         if (!timetableFile.exists()) {
             TimetableFactory.saveTimetable(new Timetable("Timetable", 6, 22),
-                    "timetables/Timetable.json");
+                    getDirectory() + "/timetables/Timetable.json");
         }
 
-        Timetable timetable = TimetableFactory.loadTimetable("timetables/Timetable.json");
+        Timetable timetable = TimetableFactory.loadTimetable(
+                getDirectory() + "/timetables/Timetable.json");
 
 
         UIManager.put("Label.foreground", Color.WHITE);
@@ -25,5 +24,19 @@ public class Main {
 
         JFrame timetableGUI = new TimetableGUI(timetable);
         timetableGUI.setVisible(true);
+    }
+
+    public static String getDirectory() {
+        try {
+            File directory = new File(Main.class
+                    .getProtectionDomain()
+                    .getCodeSource()
+                    .getLocation()
+                    .toURI()
+            ).getParentFile().getParentFile();
+            return directory.getAbsolutePath();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException();
+        }
     }
 }
