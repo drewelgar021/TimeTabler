@@ -1,6 +1,8 @@
 timetables/*
 ConvertToPDF.json
 
+dependency-reduced-pom.xml
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

@@ -1,5 +1,12 @@
 #!/bin/bash
 
-DIR="$(cd "$(dirname "$0")" && pwd)"
+# Resolve symlink to real path
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
-java -jar "$DIR/timetabler.jar" "$@"
+java -jar "$DIR/target/timetabler.jar" "$@"

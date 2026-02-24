@@ -154,7 +154,9 @@ public class TimetableGUI extends TFrame {
             TypstCompiler.generatePDF(
                     Main.getDirectory() + "/generatedPDFs/" + timetable.getTitle() + ".pdf");
             JOptionPane.showMessageDialog(this,
-                    "Timetable exported to generatedPDFs/" + timetable.getTitle() + ".pdf");
+                    "Timetable exported to "
+                            + Main.getDirectory() + "/generatedPDFs/"
+                            + timetable.getTitle() + ".pdf");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
                     this,

@@ -30,8 +30,5 @@ mvnw.cmd package
 ```
 Then run `install.bat`.
 
-Run `timetabler` in your terminal to launch the application. Only works when run within the cloned
-directory as timetable files are stored here (a workaround may be implemented one day).
-
 I have not tested the build on Windows and probably won't ever get around to it. If you find issues
 then absolutely feel free to make a PR.

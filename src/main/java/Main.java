@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args)
             throws IOException {
 
-        File timetableFile = new File("timetables/Timetable.json");
+        File timetableFile = new File(getDirectory() + "/timetables/Timetable.json");
         // Create a new empty timetable if one does not exist
         if (!timetableFile.exists()) {
             TimetableFactory.saveTimetable(new Timetable("Timetable", 6, 22),
@@ -28,15 +28,15 @@ public class Main {
 
     public static String getDirectory() {
         try {
-            File directory = new File(Main.class
+            File jarFile = new File(Main.class
                     .getProtectionDomain()
                     .getCodeSource()
                     .getLocation()
                     .toURI()
-            ).getParentFile().getParentFile();
-            return directory.getAbsolutePath();
+            );
+            return jarFile.getParentFile().getParentFile().getAbsolutePath();
         } catch (URISyntaxException e) {
-            throw new RuntimeException();
+            throw new RuntimeException("Failed to find project directory.");
         }
     }
 }
