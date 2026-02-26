@@ -150,7 +150,7 @@ public class TimetableGUI extends TFrame {
      */
     private void generatePDF() {
         try {
-            TimetableFactory.saveTimetable(timetable, "ConvertToPDF.json");
+            TimetableFactory.saveTimetable(timetable, Main.getDirectory() + "/ConvertToPDF.json");
             TypstCompiler.generatePDF(
                     Main.getDirectory() + "/generatedPDFs/" + timetable.getTitle() + ".pdf");
             JOptionPane.showMessageDialog(this,

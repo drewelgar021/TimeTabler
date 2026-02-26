@@ -3,7 +3,6 @@
 #set align(center)
 #set page(margin: 12pt)
 
-
 #let desc = text.with(size: 10pt)
 
 #let days = ("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY")
