@@ -25,7 +25,7 @@ public class TypstCompiler {
         ProcessBuilder processBuilder = new ProcessBuilder(
                 typstPath, "compile", "timetable_builder.typ", output
         );
-        processBuilder.directory(new File(System.getProperty("user.dir")));
+        processBuilder.directory(new File(Main.getDirectory()));
         processBuilder.inheritIO();
 
         Process process = processBuilder.start();
