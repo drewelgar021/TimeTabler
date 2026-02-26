@@ -15,11 +15,11 @@ public class TypstCompiler {
         String typstPath;
 
         if (os.contains("win")) {
-            typstPath = "Typst/win/typst.exe";
+            typstPath = Main.getDirectory() + "/Typst/win/typst.exe";
         } else if (os.contains("mac")) {
-            typstPath = "Typst/mac/typst";
+            typstPath = Main.getDirectory() + "/Typst/mac/typst";
         } else {
-            typstPath = "Typst/linux/typst";
+            typstPath = Main.getDirectory() + "/Typst/linux/typst";
         }
 
         ProcessBuilder processBuilder = new ProcessBuilder(
