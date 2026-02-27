@@ -150,14 +150,14 @@ public class TimetableGUI extends TFrame {
      */
     private void generatePDF() {
         try {
-            TimetableFactory.saveTimetable(timetable, Main.getDirectory() + "/ConvertToPDF.json");
+            TimetableFactory.saveTimetable(timetable, Main.getDirectory() + "/temp.json");
             TypstCompiler.generatePDF(
                     Main.getDirectory() + "/generatedPDFs/" + timetable.getTitle() + ".pdf");
             JOptionPane.showMessageDialog(this,
                     "Timetable exported to "
                             + Main.getDirectory() + "/generatedPDFs/"
                             + timetable.getTitle() + ".pdf");
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(
                     this,
                     "Unable to export timetable: " + ex.getMessage()
