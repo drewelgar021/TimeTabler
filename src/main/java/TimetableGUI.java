@@ -3,7 +3,6 @@ import tgui.TFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.Comparator;
 import java.util.List;
@@ -11,19 +10,21 @@ import java.util.List;
 /**
  * A GUI displaying a timetable's events.
  */
-public class TimetableGUI extends TFrame {
+public class TimetableGUI extends TFrame implements Reloadable {
 
     private Timetable timetable;
+    private Reloadable parentWindow;
 
     /**
      * Instantiates a new EventInputGUI.
      *
      * @param timetable The timetable to be displayed
      */
-    public TimetableGUI(Timetable timetable) {
+    public TimetableGUI(Timetable timetable, Reloadable parentWindow) {
         super(timetable.getTitle());
 
         this.timetable = timetable;
+        this.parentWindow = parentWindow;
 
         this.content().setLayout(new GridBagLayout());
         this.setSize(600, 800);
@@ -35,6 +36,7 @@ public class TimetableGUI extends TFrame {
      * Reloads the window to display current timetable data. Timetable is saved on every reload.
      */
     public void reload() {
+        parentWindow.reload();
         this.content().removeAll();
         this.content().revalidate();
         this.content().repaint();
