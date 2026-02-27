@@ -1,5 +1,6 @@
+generatedPDFs/*
 timetables/*
-ConvertToPDF.json
+temp.json
 
 dependency-reduced-pom.xml
 

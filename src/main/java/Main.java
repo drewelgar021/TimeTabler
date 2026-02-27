@@ -22,8 +22,8 @@ public class Main {
         UIManager.put("Label.foreground", Color.WHITE);
         UIManager.put("Button.foreground", Color.WHITE);
 
-        JFrame timetableGUI = new TimetableGUI(timetable);
-        timetableGUI.setVisible(true);
+        JFrame mainGUI = new MainGUI();
+        mainGUI.setVisible(true);
     }
 
     public static String getDirectory() {
@@ -36,7 +36,7 @@ public class Main {
             );
             return jarFile.getParentFile().getParentFile().getAbsolutePath();
         } catch (URISyntaxException e) {
-            throw new RuntimeException("Failed to find project directory.");
+            throw new RuntimeException("Failed to find project directory: " + e.getMessage());
         }
     }
 }

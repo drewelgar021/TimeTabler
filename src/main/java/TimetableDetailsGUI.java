@@ -1,13 +1,9 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.IOException;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import tgui.TButton;
 import tgui.TFrame;
@@ -24,18 +20,18 @@ public class TimetableDetailsGUI extends TFrame {
     private final JSpinner startTimeInput;
     private final JSpinner endTimeInput;
 
-    private final TimetableGUI timetableGUI;
+    private Reloadable parentWindow;
 
     /**
      * Instantiates a new EventInputGUI.
      * @param timetable Timetable for the new event to be added to.
-     * @param timetableGUI The parent TimetableGUI window.
+     * @param parentWindow The parent TimetableGUI window.
      */
-    public TimetableDetailsGUI(Timetable timetable, TimetableGUI timetableGUI) {
+    public TimetableDetailsGUI(Timetable timetable, Reloadable parentWindow) {
         super("Edit Timetable Details");
 
         this.timetable = timetable;
-        this.timetableGUI = timetableGUI;
+        this.parentWindow = parentWindow;
 
         this.setSize(400, 500);
 
@@ -105,7 +101,14 @@ public class TimetableDetailsGUI extends TFrame {
         timetable.setTitle(title);
         timetable.setStartTime(startTime);
         timetable.setEndTime(endTime);
-        timetableGUI.reload();
+
+        try {
+            timetable.save();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Failed to save timetable: " + e.getMessage());
+        }
+
+        parentWindow.reload();
         dispose();
     }
 }

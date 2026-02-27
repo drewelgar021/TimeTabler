@@ -9,7 +9,7 @@ public class TypstCompiler {
      * Generates a PDF timetable based on the timetable json located at /ConvertToPDF.json
      * @param output Path of the generated PDF file
      */
-    public static void generatePDF(String output) throws IOException {
+    public static void generatePDF(String output) throws IOException, InterruptedException {
 
         String os = System.getProperty("os.name").toLowerCase();
         String typstPath;
@@ -29,5 +29,12 @@ public class TypstCompiler {
         processBuilder.inheritIO();
 
         Process process = processBuilder.start();
+
+        process.waitFor();
+
+        File temp = new File(Main.getDirectory() + "/temp.json");
+        if (temp.exists()) {
+            temp.delete();
+        }
     }
 }
